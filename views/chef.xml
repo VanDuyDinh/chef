@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="vezo_chef_act" model="ir.actions.act_window">
+            <field name="name">Chef</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vezo.chef</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Thêm mới một chef ở đây
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+        <record id="vezo_chef_tree" model="ir.ui.view">
+            <field name="name">Chef</field>
+            <field name="model">vezo.chef</field>
+            <field name="arch" type="xml">
+                <tree string="Chef">
+                    <field name="chef_name"/>
+                    <field name="chef_telephone"/>
+                    <field name="chef_email"/>
+                    <field name="chef_address"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vezo_chef_form" model="ir.ui.view">
+            <field name="name">Chef</field>
+            <field name="model">vezo.chef</field>
+            <field name="arch" type="xml">
+                <form string="Chef">
+                    <sheet>
+                        <div class="oe_button_box" name="expense_button_box">
+                            <button name="toggle_active"
+                                    type="object"
+                                    confirm="(Un)archiving a project automatically (un)archives its tasks and issues. Do you want to proceed?"
+                                    class="oe_stat_button"
+                                    icon="fa-archive">
+                            </button>
+                        </div>
+
+                        <field name="chef_image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="chef_name" placeholder="Tên chef"/>
+                            </h1>
+                        </div>
+                        <group>
+
+                            <group>
+                                <field name="chef_telephone"/>
+                                <field name="chef_email"/>
+                            </group>
+
+                            <group>
+                                <field name="chef_address"/>
+                            </group>
+
+                        </group>
+
+
+                        <notebook>
+                            <page string="Mô tả">
+                                <group>
+
+                                </group>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="vezo_chef_kanban" model="ir.ui.view">
+            <field name="name">Chef</field>
+            <field name="model">vezo.chef</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="chef_name"/>
+                    <field name="chef_image"/>
+                    <field name="chef_email"/>
+                    <field name="chef_telephone"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <img t-att-arc="kanban_image('vezo.chef', 'chef_image', record.chef_name.value)"
+                                     width="64" height="64"
+                                     class="o_kanban_image pull-left"/>
+
+                                <div class="oe_kanban_details">
+
+                                    <strong>Tên: <field name="chef_name"/></strong><br/>
+                                    Số điện thoại: <field name="chef_telephone"/><br/>
+                                    Email: <field name="chef_email"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
