@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="vezo_partner_act" model="ir.actions.act_window">
+            <field name="name">Partner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vezo.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Thêm một partner tại đây
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <record id="vezo_partner_tree" model="ir.ui.view">
+            <field name="name">Partner</field>
+            <field name="model">vezo.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Partner">
+                    <field name="partner_name"/>
+                    <field name="partner_address"/>
+                    <field name="partner_telephone"/>
+                    <field name="partner_tax_code"/>
+                    <field name="partner_website"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="vezo_partner_form" model="ir.ui.view">
+            <field name="name">Partner</field>
+            <field name="model">vezo.partner</field>
+            <field name="arch" type="xml">
+                <form string="Partner">
+                    <sheet>
+                        <field name="partner_image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="partner_name" placeholder="Tên partner"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="partner_contact" widget="many2one_clickable"/>
+                                <field name="partner_tax_code"/>
+                            </group>
+
+                            <group>
+                                <field name="partner_website"/>
+                                <field name="partner_address" widget="many2one_clickable"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

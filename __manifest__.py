@@ -11,6 +11,7 @@
     'website': 'http://www.domain.com',
     'depend': ['base'],
     'data': ['views/chef.xml',
+             'views/partner.xml',
              'views/menu.xml',
              ],
     'demo': [],
